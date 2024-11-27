@@ -12,7 +12,7 @@ namespace SingleResponsibilityPrinciple
         /// </summary>
         /// <param name="stream"> File must be passed in as a Stream. </param>
         /// <returns> Returns a list of strings, one for each string for each line in the file </returns>
-        private IEnumerable<string> ReadTradeData(Stream stream)
+        public IEnumerable<string> ReadTradeData(Stream stream)
         {
             // read rows
             List<string> lines = new List<string>();
@@ -128,9 +128,9 @@ namespace SingleResponsibilityPrinciple
             string datadirConnectString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\tradedatabase.mdf;Integrated Security=True;Connect Timeout=30;";
             // This users the Azure connection string
             string azureConnectString = @"Data Source=cis3115-server.database.windows.net;Initial Catalog=CIS3115;User ID=cis3115;Password=Saints4SQL;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-           
+            string simbaConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\szvidzwa\Documents\tradedatabase.mdf;Integrated Security=True;Connect Timeout=30";
             // Change the connection string used to match the one you want
-            using (var connection = new SqlConnection(genericConnectString))
+            using (var connection = new SqlConnection(simbaConnectionString))
             {
                 LogMessage("INFO:Going to open database connection");
                 connection.Open();
